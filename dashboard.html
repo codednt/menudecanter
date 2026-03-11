@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Menu - DECANTER</title>
+    <link rel="stylesheet" href="dashboard-style.css">
+    <!-- Importiamo i dati e le funzioni del menu -->
+    <script src="menu-data.js"></script>
+</head>
+<body>
+
+    <div id="notification">✅ Modifiche salvate con successo!</div>
+
+    <div class="dashboard-container">
+        <div class="top-nav-group">
+            <a href="index.html" class="top-nav-btn">← Menù Principale</a>
+            <button class="top-nav-btn save-header-btn" onclick="saveAll()">Salva Modifiche</button>
+        </div>
+        
+        <header>
+            <h1>GESTIONE MENÙ</h1>
+            <p class="subtitle">Modifica i Piatti e i Prezzi del tuo Menù Digitale Personalizzato</p>
+        </header>
+
+        <div class="editor-controls">
+            <button class="btn btn-add-category" onclick="addCategory()">+ Aggiungi Nuova Categoria</button>
+        </div>
+
+        <div id="editor-area">
+            <!-- Qui verranno generate le categorie via Javascript -->
+        </div>
+
+        <hr style="margin: 40px 0; border: 0; border-top: 1px solid #eee;">
+        
+        <div style="text-align: center;">
+            <button class="btn btn-reset" onclick="resetDefaults()">⚠ Ripristina Menu Originale</button>
+        </div>
+    </div>
+
+    <img src="logotrasp.png" alt="Logo DNTC" class="bottom-logo">
+
+    <!-- Modale Selezione Ingredienti -->
+    <div id="ingredientModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeIngredientModal()">&times;</span>
+            <h2 class="modal-title">Seleziona Ingredienti</h2>
+            <div class="add-ingredient-form">
+                <input type="text" id="new-ingredient-input" placeholder="Nome nuovo ingrediente...">
+                <button class="btn btn-add-ing" onclick="addNewIngredient()">Aggiungi</button>
+            </div>
+            <hr class="modal-divider">
+            <p style="text-align:center; margin-bottom:15px; color:#666;">Seleziona gli ingredienti per comporre il piatto.</p>
+            <div id="ingredients-grid" class="ingredients-grid"></div>
+            <button class="btn btn-save" onclick="applyIngredients()">Applica Ingredienti</button>
+        </div>
+    </div>
+
+    <script src="dashboard-script.js"></script>
+</body>
+</html>

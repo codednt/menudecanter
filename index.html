@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECANTER - Ristorante - Pizzeria</title>
+    <link rel="stylesheet" href="index-style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>DECANTER</h1>
+        <p class="subtitle">Ristorante – Pizzeria</p>
+        <div class="button-group">
+            <button class="menu-btn" onclick="window.location.href='menu.html'">Il Nostro Menù</button>
+            <button class="menu-btn" onclick="openModal()">Info & Contatti</button>
+        </div>
+    </div>
+
+    <!-- Pulsante Dashboard -->
+    <a href="dashboard.html" class="admin-btn">Area Personale</a>
+
+    <img src="logotrasp.png" alt="Logo DNTC" class="bottom-logo">
+
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <div class="modal-title">INFO & CONTATTI</div>
+            </div>
+            
+            <div class="info-block">
+                <h3>📍 Dove Siamo</h3>
+                <p><a href="https://maps.app.goo.gl/3r3MgDutk4iuELb98" target="_blank">Via Francesco Petrarca, 42<br>72026 San Pancrazio Salentino (BR)</a></p>
+            </div>
+            
+            <div class="info-block">
+                <h3>📞 Telefono</h3>
+                <p>Tel: <a href="tel:+39 340 923 0548">+39 340 923 0548</a></p>
+                <p>Tel: <a href="tel:+39 377 399 7255">+39 377 399 7255</a></p>
+                <p>Per Info & Prenotazioni</p>
+            </div>
+            
+            <div class="info-block">
+                <h3>🕐 Orari di Apertura</h3>
+                <div class="hours-item">
+                    <span class="hours-day">Lunedì - Domenica</span>
+                    <span>17:30- 23:00</span>
+                </div>
+                <div class="hours-item">
+                    <span class="hours-day">Mercoledì</span>
+                    <span>Chiuso</span>
+                </div>
+            </div>
+            
+            <div class="info-block">
+                <h3>📱 Social</h3>
+                <p>Instagram: <a href="https://www.instagram.com/decanterpizzeriaristorante/" target="_blank">@decanterpizzeriaristorante</a></p>
+                <p>Facebook: <a href="https://www.facebook.com/decanterristorantepizzeria" target="_blank">Decanter Ristorante Pizzeria</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="index-script.js"></script>
+</body>
+</html>
