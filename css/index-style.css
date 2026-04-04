@@ -13,6 +13,8 @@ html {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100vh;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
     display: flex;
     align-items: center;
     justify-content: center;

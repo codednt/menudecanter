@@ -1,0 +1,1 @@
+// Richiedi password semplice all'avvio (Opzionale - rimuovi se non serve)

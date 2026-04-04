@@ -1,5 +1,31 @@
 const body = document.body;
 
+// 0. Applica Impostazioni Globali
+const settings = getSettings();
+
+// Aggiorna Titoli
+const headerH1 = document.querySelector('.header h1');
+const restaurantNameText = document.querySelector('.header .restaurant-name');
+const subtitleText = document.querySelector('.header .subtitle-sm');
+const bottomLogo = document.querySelector('.bottom-logo');
+
+if(headerH1) headerH1.innerText = "MENÙ"; // Titolo fisso o personalizzabile
+if(restaurantNameText) restaurantNameText.innerText = settings.restaurantName;
+if(subtitleText) subtitleText.innerText = settings.subtitle;
+if(bottomLogo && settings.logo) bottomLogo.src = settings.logo;
+
+// Applica Colore Primario e Sfondo tramite CSS dinamico
+const dynamicStyle = document.createElement('style');
+dynamicStyle.innerHTML = `
+    :root { --primary-color: ${settings.primaryColor}; }
+    .category-section { background: ${settings.primaryColor}F2 !important; border-color: white !important; } 
+    .category-title { color: white !important; }
+    .allergen-badge { background: white !important; color: var(--primary-color) !important; }
+    .image-modal-close { color: white !important; text-shadow: 0 0 10px var(--primary-color); }
+    ${settings.backgroundImage ? `body::before, html { background-image: url('${settings.backgroundImage}') !important; }` : ''}
+`;
+document.head.appendChild(dynamicStyle);
+
 // 1. Carica i dati e Genera l'HTML
 const menuData = getMenuData();
 const menuContainer = document.getElementById('dynamic-menu-content');
@@ -39,7 +65,16 @@ menuData.forEach(category => {
             ? item.desc 
             : finalIngredientsString;
 
-        const imageHtml = item.image ? `<img src="${item.image}" alt="${item.name}" class="menu-item-image">` : '';
+        // Gestione Asterisco Surgelato
+        let cleanName = item.name.replace(/\s*\*\s*$/, '');
+        const displayName = item.isFrozen ? `${cleanName} *` : cleanName;
+
+        // Gestione Nota Allergeni
+        const allergenNote = (item.showAllergens && item.allergens && item.allergens.length > 0)
+            ? `<div class="item-description" style="font-size: 0.75em; color: #ffc107;">Allergeni: ${item.allergens.join(', ')}</div>`
+            : '';
+
+        const imageHtml = item.image ? `<img src="${item.image}" alt="${item.name}" class="menu-item-image" onclick="event.stopPropagation(); openImageModal(this.src)">` : '';
         const hasImageClass = item.image ? 'has-image' : '';
 
         itemsHtml += `
@@ -47,10 +82,11 @@ menuData.forEach(category => {
             ${imageHtml}
             <div class="item-content">
                 <div class="item-header">
-                    <div class="item-name">${item.name}</div>
+                    <div class="item-name">${displayName}</div>
                     <div class="item-price">€ ${item.price}</div>
                 </div>
                 ${descriptionText ? `<div class="item-description">${descriptionText}</div>` : ''}
+                ${allergenNote}
             </div>
         </div>`;
     });
@@ -67,6 +103,36 @@ menuData.forEach(category => {
     
     menuContainer.appendChild(section);
 });
+
+// --- Logica Modale Immagine ---
+// Crea il modale se non esiste nel DOM
+if (!document.getElementById('imageModal')) {
+    const modalHTML = `
+        <div id="imageModal" class="image-modal">
+            <span class="image-modal-close">&times;</span>
+            <img class="image-modal-content" id="modalImage">
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+const imageModal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImage');
+const closeBtn = document.querySelector('.image-modal-close');
+
+window.openImageModal = function(src) {
+    imageModal.style.display = "flex";
+    modalImg.src = src;
+}
+
+closeBtn.onclick = function() { imageModal.style.display = "none"; }
+
+// Chiudi cliccando fuori dall'immagine
+imageModal.onclick = function(event) {
+    if (event.target == imageModal) {
+        imageModal.style.display = "none";
+    }
+}
 
 // 2. Logica Accordion (ora collegata agli elementi appena creati)
 const categorySections = document.querySelectorAll('.category-section');

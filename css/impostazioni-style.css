@@ -1,0 +1,31 @@
+.settings-card {
+    background: rgba(127, 23, 52, 0.95);
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.color-picker-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 10px;
+    border-radius: 6px;
+    justify-content: center;
+}
+
+#set-color {
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background: none;
+}
+
+#color-hex-label {
+    color: #333;
+    font-weight: 700;
+}

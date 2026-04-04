@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Menù - Area Personale</title>
+    <link rel="stylesheet" href="css/gestionemenu-style.css">
+    <script src="js/menu-data.js"></script> 
+    <script>applyGlobalTheme();</script>
+</head>
+<body>
+
+    <!-- Navigazione Superiore -->
+    <div class="top-nav-group">
+        <a href="dashboard.html" class="top-nav-btn">⬅ TORNA ALLA DASHBOARD</a>
+        <button class="top-nav-btn save-header-btn" onclick="saveAll()">Salva Modifiche</button>
+    </div>
+
+    <!-- Intestazione -->
+    <header>
+        <h1>GESTIONE PIATTI</h1>
+        <p class="subtitle">Modifica, aggiungi o rimuovi piatti e categorie</p>
+    </header>
+
+    <div class="dashboard-container">
+        
+        <!-- Controlli Generali -->
+        <div class="editor-controls">
+            <button class="btn btn-add-category" onclick="addCategory()">+ AGGIUNGI NUOVA CATEGORIA</button>
+        </div>
+
+        <!-- Area Editor (Riempita automaticamente da JS) -->
+        <div id="editor-area">
+            <!-- Qui vengono generate le categorie e i piatti -->
+        </div>
+
+        <button class="btn btn-reset" onclick="resetDefaults()">Ripristina Menu Originale (Reset)</button>
+    </div>
+
+    <!-- Logo Fondo -->
+    <img src="img/logotrasp.png" alt="Logo" class="bottom-logo">
+
+    <!-- Notifica Salvataggio -->
+    <div id="notification">Modifiche salvate con successo!</div>
+
+    <!-- Modale Ingredienti -->
+    <div id="ingredientModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header-row">
+                <h3 class="modal-title">Seleziona Ingredienti</h3>
+                <input type="text" id="modal-search-input" placeholder="Cerca..." oninput="filterModalGrid()">
+                <span class="close-btn" onclick="closeIngredientModal()">&times;</span>
+            </div>
+            
+            <div class="ingredients-grid" id="ingredients-grid">
+                <!-- Generato via JS -->
+            </div>
+
+            <hr class="modal-divider">
+            
+            <h4 style="text-align:center; color:#7f1734;">Crea Nuovo Ingrediente</h4>
+            <div class="add-ingredient-form">
+                <input type="text" id="new-ingredient-input" placeholder="Es. Cipolla Rossa">
+                <button class="btn-add-ing" onclick="addNewIngredient()">Aggiungi</button>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-save" onclick="applyIngredients()">CONFERMA SELEZIONE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Carica prima i dati del menu (assumendo che esista un file menu-data.js o simile che espone getMenuData/saveMenuData) -->
+    <!-- Se le funzioni getMenuData sono dentro dashboard-script.js o menu-script.js, assicurati di includere quello giusto. 
+         Qui includo uno script fittizio per i dati se non è già incluso nel dashboard-script.js. 
+         Se getMenuData è definita in un altro file, aggiungilo qui sopra dashboard-script.js -->
+    <script src="js/menu-data.js"></script> 
+    <script src="js/gestionemenu-script.js"></script>
+
+</body>
+</html>

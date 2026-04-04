@@ -1,0 +1,11 @@
+# File di sistema Windows
+Thumbs.db
+desktop.ini
+
+# Configurazioni Editor (VS Code / JetBrains)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

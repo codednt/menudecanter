@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menù - DECANTER</title>
-    <link rel="stylesheet" href="menu-style.css">
+    <link rel="stylesheet" href="css/menu-style.css">
     <!-- Importa i dati del menu -->
-    <script src="menu-data.js"></script>
+    <script src="js/menu-data.js"></script>
+    <script>applyGlobalTheme();</script>
 </head>
 <body>
     <div class="menu-container">
@@ -20,8 +21,14 @@
         <div id="dynamic-menu-content"></div>
     </div>
 
-    <img src="logotrasp.png" alt="Logo DNTC" class="bottom-logo">
+    <img src="img/logotrasp.png" alt="Logo DNTC" class="bottom-logo">
 
-    <script src="menu-script.js"></script>
+    <!-- Image Modal (Lightbox) -->
+    <div id="imageModal" class="image-modal">
+        <span class="image-modal-close">&times;</span>
+        <img class="image-modal-content" id="modalImage">
+    </div>
+
+    <script src="js/menu-script.js"></script>
 </body>
 </html>

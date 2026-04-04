@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impostazioni - Area Personale</title>
+    <link rel="stylesheet" href="css/gestionemenu-style.css">
+    <link rel="stylesheet" href="css/impostazioni-style.css">
+    <script src="js/menu-data.js"></script>
+    <script>applyGlobalTheme();</script>
+</head>
+<body>
+
+    <div class="top-nav-group">
+        <a href="dashboard.html" class="top-nav-btn">⬅ TORNA ALLA DASHBOARD</a>
+        <button class="top-nav-btn save-header-btn" onclick="saveAllSettings()">Salva Impostazioni</button>
+    </div>
+
+    <header>
+        <h1>IMPOSTAZIONI GENERALI</h1>
+        <p class="subtitle">Personalizza l'identità visiva del tuo menù</p>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="settings-card">
+            
+            <div class="form-group">
+                <label>Nome del Locale</label>
+                <input type="text" id="set-name" placeholder="Es. Decanter">
+            </div>
+
+            <div class="form-group">
+                <label>Sottotitolo / Descrizione</label>
+                <input type="text" id="set-subtitle" placeholder="Es. Ristorante - Pizzeria">
+            </div>
+
+            <div class="form-group">
+                <label>Colore Principale (Brand)</label>
+                <div class="color-picker-container">
+                    <input type="color" id="set-color">
+                    <span id="color-hex-label">#7f1734</span>
+                </div>
+            </div>
+
+            <hr class="modal-divider">
+
+            <div class="form-row-extra">
+                <div class="form-group">
+                    <label>Logo (Trasparente consigliato)</label>
+                    <img src="" id="logo-preview" class="item-image-preview" style="display:none; background: rgba(255,255,255,0.1);">
+                    <input type="file" id="logo-upload" accept="image/*" onchange="previewImage(this, 'logo-preview')" style="display:none">
+                    <button class="btn btn-upload" onclick="document.getElementById('logo-upload').click()">Carica Logo</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Sfondo Menù</label>
+                    <img src="" id="bg-preview" class="item-image-preview" style="display:none">
+                    <input type="file" id="bg-upload" accept="image/*" onchange="previewImage(this, 'bg-preview')" style="display:none">
+                    <button class="btn btn-upload" onclick="document.getElementById('bg-upload').click()">Carica Sfondo</button>
+                </div>
+            </div>
+
+            <hr class="modal-divider">
+            <h3 style="text-align: center; color: white; margin-bottom: 20px;">INFO & CONTATTI</h3>
+
+            <div class="form-group">
+                <label>📍 Indirizzo (Testo)</label>
+                <input type="text" id="set-addr" placeholder="Via Roma, 1...">
+            </div>
+            <div class="form-group">
+                <label>📍 Link Google Maps</label>
+                <input type="text" id="set-addr-link" placeholder="https://maps.app.goo.gl/...">
+            </div>
+
+            <div class="form-row-extra">
+                <div class="form-group">
+                    <label>📞 Telefono 1</label>
+                    <input type="text" id="set-tel1">
+                </div>
+                <div class="form-group">
+                    <label>📞 Telefono 2</label>
+                    <input type="text" id="set-tel2">
+                </div>
+            </div>
+
+            <div class="form-row-extra">
+                <div class="form-group">
+                    <label>🕐 Orari (Riga 1)</label>
+                    <input type="text" id="set-h1-day" placeholder="Lunedì - Domenica">
+                    <input type="text" id="set-h1-time" placeholder="17:30 - 23:00" style="margin-top:5px">
+                </div>
+                <div class="form-group">
+                    <label>🕐 Orari (Riga 2)</label>
+                    <input type="text" id="set-h2-day" placeholder="Mercoledì">
+                    <input type="text" id="set-h2-time" placeholder="Chiuso" style="margin-top:5px">
+                </div>
+            </div>
+
+            <div class="form-row-extra">
+                <div class="form-group">
+                    <label>📸 Instagram (Nome e Link)</label>
+                    <input type="text" id="set-ig-name" placeholder="@nome">
+                    <input type="text" id="set-ig-link" placeholder="https://..." style="margin-top:5px">
+                </div>
+                <div class="form-group">
+                    <label>🔵 Facebook (Nome e Link)</label>
+                    <input type="text" id="set-fb-name" placeholder="Nome Pagina">
+                    <input type="text" id="set-fb-link" placeholder="https://..." style="margin-top:5px">
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <button class="btn btn-save" onclick="saveAllSettings()">SALVA TUTTO</button>
+                <button class="btn btn-reset" onclick="resetToDefaults()" style="width:100%">Ripristina Originali</button>
+            </div>
+
+        </div>
+    </div>
+
+    <img src="img/logotrasp.png" alt="Logo" class="bottom-logo" id="footer-logo">
+
+    <div id="notification">Impostazioni salvate!</div>
+
+    <script src="js/menu-data.js"></script>
+    <script src="js/impostazioni-script.js"></script>
+</body>
+</html>
