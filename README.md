@@ -1,4 +1,4 @@
-# Menù Decanter
+# MyModelMenu
 
 Sistema di gestione menù digitale interattivo per ristorazione, sviluppato con HTML5, CSS3 e JavaScript (Vanilla).
 
